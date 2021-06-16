@@ -1,43 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-
-class AddCartao extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cartoes: []
-    }
-  }
-
-  criaCartao = () => {
-    const {cartoes} = this.state
-    cartoes.push({
-      id: cartoes.length,
-      card: 'Clique para alterar.',
-    })
-    this.setState({ cartoes });
-  }
-
-  render(){
-    const {cartoes} = this.state
-  
-    return (
-      <div>
-
-        {cartoes.map(itemC => (
-          <div key={itemC.id} className='cartao'>
-            <span contentEditable="true" suppressContentEditableWarning='true'>{itemC.card}</span>
-          </div>
-        ))}
-
-        <button onClick={this.criaCartao}>
-          Adicionar Cartão
-        </button>
-      
-      </div>
-    )
-  }
-}
+import AddCartao from './AddCartao';
+import rg from './components/rg.jpg';
+//import Cabecalho from './Cabecalho'
 
 class App extends Component {
   constructor(props) {
@@ -62,18 +27,33 @@ class App extends Component {
   render() {
     const {listas} = this.state
     return (
-      <div className='colunas'>
-        
-        {listas.map(itemL => (
-          <div key={itemL.id} className='lista'>
-            <h3 contentEditable="true" suppressContentEditableWarning='true'>{itemL.titulo}</h3>
-            <div>{itemL.botao}</div>
+      <div>
+        <div className='barraCabeçalho'>
+          <div className='espaçoLogo' >
+            <img src='./components/rg.jpg' />
           </div>
-        ))}
-        
+        </div>
+
+        <div className='barraQuadro'>
+          <div className='contornoTitulo'>
+            <h1 className='tituloQuadro' contentEditable="true" suppressContentEditableWarning='true'>Digite o nome do quadro</h1>
+          </div>
+        </div>
+
+        <div className='colunas'>
+          
+          {listas.map(itemL => (
+            <div key={itemL.id} className='lista'>
+              <h3 className='tituloCartao' contentEditable="true" suppressContentEditableWarning='true'>{itemL.titulo}</h3>
+              <div>{itemL.botao}</div>
+            </div>
+          ))}
+
+        </div>
+
         <button onClick={this.criaLista} className='btnNovaLista'>
-          Criar Lista
-        </button>
+            Criar Lista
+          </button>
 
       </div>
     )
