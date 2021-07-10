@@ -25,13 +25,13 @@ export default class AddCartao extends Component {
   
           {cartoes.map(itemC => (
             <div key={itemC.id} className='cartao'>
-              <span contentEditable="true" suppressContentEditableWarning='true'>{itemC.card}</span>
+              <span className='textoCartao' contentEditable="true" suppressContentEditableWarning='true'>{itemC.card}</span>
             </div>
           ))}
   
-          <button className='btnCartao' onClick={this.criaCartao}>
-            Adicionar Cartão
-          </button>
+          <span className='btnCartao' onClick={this.criaCartao}>
+            + Adicionar um cartão
+          </span>
         
         </div>
       )

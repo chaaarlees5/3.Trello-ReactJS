@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import AddCartao from './AddCartao';
-import rg from './components/rg.jpg';
+import logo from './components/logo.gif';
 //import Cabecalho from './Cabecalho'
+
 
 class App extends Component {
   constructor(props) {
@@ -30,34 +31,61 @@ class App extends Component {
       <div>
         <div className='barraCabeçalho'>
           <div className='espaçoLogo' >
-            <img src='./components/rg.jpg' />
+            <img src={logo} alt="BigCo Inc. logo" className='logo'/>
           </div>
         </div>
 
         <div className='barraQuadro'>
           <div className='contornoTitulo'>
-            <h1 className='tituloQuadro' contentEditable="true" suppressContentEditableWarning='true'>Digite o nome do quadro</h1>
+            <h2 
+            className='tituloQuadro' 
+            contentEditable="true" 
+            suppressContentEditableWarning='true'
+            >
+              Tecnologia e Ciência
+            </h2>
           </div>
         </div>
+        <div className='campoListas'>
+          <div className='colunas'>
+            
+            {listas.map(itemL => (
+              <div key={itemL.id} className='lista'>
+                <h2 
+                  className='tituloCartao' 
+                  contentEditable="true" 
+                  suppressContentEditableWarning='true'
+                >{itemL.titulo}
+                </h2>
+                
+                <div>{itemL.botao}</div>
+              </div>
+            ))}
 
-        <div className='colunas'>
-          
-          {listas.map(itemL => (
-            <div key={itemL.id} className='lista'>
-              <h3 className='tituloCartao' contentEditable="true" suppressContentEditableWarning='true'>{itemL.titulo}</h3>
-              <div>{itemL.botao}</div>
+            <div className='espacoBtn'>
+              <div 
+              onClick={this.criaLista} 
+              className='btnNovaLista'
+              >
+                + Adicionar uma lista
+              </div>
             </div>
-          ))}
-
-        </div>
-
-        <button onClick={this.criaLista} className='btnNovaLista'>
-            Criar Lista
-          </button>
-
+          </div>
+        </div>  
       </div>
     )
   }
 }
 
 export default (App);
+
+/*  
+<div className='lista'>
+              
+            </div>
+
+            <input type='text' placeholder='Insira o título da lista' dir='auto' />
+              <button onClick={this.criaLista} className='btnNovaLista'>
+                  Adicionar Lista
+              </button>
+*/
